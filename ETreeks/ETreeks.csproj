@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ETreeks.Core\ETreeks.Core.csproj" />
+    <ProjectReference Include="..\ETreeks.Infra\ETreeks.Infra.csproj" />
+  </ItemGroup>
+
+
+</Project>
