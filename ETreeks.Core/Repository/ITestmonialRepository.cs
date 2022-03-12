@@ -11,7 +11,6 @@ namespace ETreeks.Core.Repository
         string deleteTestmonial(int id);
         string updateTestmonial(Testmonial testmonial);
         List<Testmonial> getTestmonial();
-        //Branch Dev
 
     }
 }
