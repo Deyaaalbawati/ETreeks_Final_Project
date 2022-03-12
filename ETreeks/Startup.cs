@@ -57,6 +57,8 @@ namespace ETreeks
             services.AddScoped<IMessageService, MessageService>();
             services.AddScoped<ITestmonialService, TestmonialService>();
 
+            Console.WriteLine("Development");
+
             services.AddControllers();
         }
 
