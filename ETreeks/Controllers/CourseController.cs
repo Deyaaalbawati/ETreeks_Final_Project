@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication1.Models;
@@ -54,6 +55,56 @@ namespace ETreeks.Controllers
         {
             return _courseService.updateCourse(course);
         }
+
+        [HttpPost]
+        [Route("UploadImage")]
+        public Course UploadImage()
+        {
+            try
+            {
+                //manar
+                var file = Request.Form.Files[0];
+                var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+                var path = Path.Combine("Image", fileName);
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+
+                Course course = new Course();
+                course.Courseimage = fileName;
+                return course;
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        [HttpPost, DisableRequestSizeLimit]
+        [Route("Upload")]
+        public Account Upload()
+        {
+            try
+            {
+                var file = Request.Form.Files[0];
+                var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+                var path = Path.Combine("StaticFiles", fileName);
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+                Account account2 = new Account();
+                account2.Certificate = fileName;
+                return account2;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
 
     }
 

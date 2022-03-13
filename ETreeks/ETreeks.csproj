@@ -15,5 +15,10 @@
     <ProjectReference Include="..\ETreeks.Infra\ETreeks.Infra.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Image\" />
+    <Folder Include="StaticFiles\" />
+  </ItemGroup>
+
 
 </Project>

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication1.Models;
@@ -53,6 +54,31 @@ namespace ETreeks.Controllers
         public string updateCategory([FromBody] Category category)
         {
             return _categoryService.updateCategory(category);
+        }
+
+        [HttpPost]
+        [Route("UploadImage")]
+        public Category UploadImage()
+        {
+            try
+            {
+                var file = Request.Form.Files[0];
+                var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+                var path = Path.Combine("Image", fileName);
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+
+                Category category = new Category();
+                category.Categoryimage = fileName;
+                return category;
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
     }
