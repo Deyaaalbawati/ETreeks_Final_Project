@@ -14,6 +14,6 @@ namespace WebApplication1.Models
         public string Aboutusadders { get; set; }
         public string Background { get; set; }
 
-        public virtual ICollection<Account> Accounts { get; set; }
+     
     }
 }

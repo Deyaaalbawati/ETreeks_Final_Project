@@ -23,9 +23,6 @@ namespace ETreeks.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("RoleIdPac", account.Roleid, dbType: System.Data.DbType.Decimal);
-            p.Add("LocationIdPac", account.Locationid, dbType: System.Data.DbType.Decimal);
-            p.Add("ManagepageIdPac", account.Managepageid, dbType: System.Data.DbType.Decimal);
-
             p.Add("FirstNamePac", account.Firstname, dbType: System.Data.DbType.String);
             p.Add("LastNamePac", account.Lastname, dbType: System.Data.DbType.String);
             p.Add("AccountPasswordPac", account.Accountpassword, dbType: System.Data.DbType.String);
@@ -39,6 +36,10 @@ namespace ETreeks.Infra.Repository
             p.Add("AccountStatusPac", account.Accountstatus, dbType: System.Data.DbType.String);
             p.Add("CertificatePac", account.Certificate, dbType: System.Data.DbType.String);
             p.Add("SpecializationPac", account.Specialization, dbType: System.Data.DbType.String);
+            p.Add("WlinePac", account.Wline, dbType: System.Data.DbType.String);
+            p.Add("HlinePac", account.Hline, dbType: System.Data.DbType.String);
+
+
 
 
             var result = _context.connection.ExecuteAsync("AccountPackage.createAccount", p, commandType: CommandType.StoredProcedure);
@@ -60,14 +61,31 @@ namespace ETreeks.Infra.Repository
             return result.ToList();
         }
 
+        public List<Account> getStudent()
+        {
+            IEnumerable<Account> result = _context.connection.Query<Account>("AccountPackage.getStudent", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
+        public List<Account> getTeacher()
+        {
+            IEnumerable<Account> result = _context.connection.Query<Account>("AccountPackage.getTeacher", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
+        public List<Account> searchTeacher(string TeacherName)
+        {
+            var p = new DynamicParameters();
+            p.Add("TeacherName", TeacherName, dbType: System.Data.DbType.String);
+            var result = _context.connection.Query<Account>("AccountPackage.searchTeacher", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
         public string updateAccount(Account account)
         {
             var p = new DynamicParameters();
             p.Add("AcoountIdPac", account.Acoountid, dbType: System.Data.DbType.Decimal);
             p.Add("RoleIdPac", account.Roleid, dbType: System.Data.DbType.Decimal);
-            p.Add("LocationIdPac", account.Locationid, dbType: System.Data.DbType.Decimal);
-            p.Add("ManagepageIdPac", account.Managepageid, dbType: System.Data.DbType.Decimal);
-
             p.Add("FirstNamePac", account.Firstname, dbType: System.Data.DbType.String);
             p.Add("LastNamePac", account.Lastname, dbType: System.Data.DbType.String);
             p.Add("AccountPasswordPac", account.Accountpassword, dbType: System.Data.DbType.String);
@@ -81,6 +99,8 @@ namespace ETreeks.Infra.Repository
             p.Add("AccountStatusPac", account.Accountstatus, dbType: System.Data.DbType.String);
             p.Add("CertificatePac", account.Certificate, dbType: System.Data.DbType.String);
             p.Add("SpecializationPac", account.Specialization, dbType: System.Data.DbType.String);
+            p.Add("WlinePac", account.Wline, dbType: System.Data.DbType.String);
+            p.Add("HlinePac", account.Hline, dbType: System.Data.DbType.String);
 
 
             var result = _context.connection.ExecuteAsync("AccountPackage.updateAccount", p, commandType: CommandType.StoredProcedure);

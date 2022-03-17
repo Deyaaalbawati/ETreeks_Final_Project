@@ -5,8 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.12.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ETreeks.Core\ETreeks.Core.csproj" />
     <ProjectReference Include="..\ETreeks.Infra\ETreeks.Infra.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Image\" />
+    <Folder Include="StaticFiles\" />
   </ItemGroup>
 
 
