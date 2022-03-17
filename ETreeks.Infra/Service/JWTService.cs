@@ -36,6 +36,8 @@ namespace ETreeks.Infra.Service
                     Subject = new ClaimsIdentity(new Claim[] {
                     new Claim(ClaimTypes.Email,result.Email),
                     new Claim(ClaimTypes.Role,result.RoleName),
+                    new Claim(ClaimTypes.NameIdentifier,result.Acoountid.ToString()),
+
                     //new Claim(ClaimTypes.Name,result.FirstName) //deyaa 
 
                     }),

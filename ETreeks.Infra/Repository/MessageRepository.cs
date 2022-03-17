@@ -22,10 +22,11 @@ namespace ETreeks.Infra.Repository
         public string createMessage(Message message)
         {
             var p = new DynamicParameters();
-            p.Add("AcoountIdPac", message.Acoountid, dbType: System.Data.DbType.Decimal);
             p.Add("SubjectPac", message.Subject, dbType: System.Data.DbType.String);
             p.Add("MessageBodyPac", message.Messagebody, dbType: System.Data.DbType.String);
             p.Add("SenderEmailPac", message.Senderemail, dbType: System.Data.DbType.String);
+            p.Add("RecevieremailPac", message.Recevieremail, dbType: System.Data.DbType.String);
+
 
             var result = _context.connection.ExecuteAsync("MessagePackage.createMessage", p, commandType: CommandType.StoredProcedure);
 
@@ -50,10 +51,11 @@ namespace ETreeks.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("MessageIdPac", message.Messageid, dbType: System.Data.DbType.Decimal);
-            p.Add("AcoountIdPac", message.Acoountid, dbType: System.Data.DbType.Decimal);
             p.Add("SubjectPac", message.Subject, dbType: System.Data.DbType.String);
             p.Add("MessageBodyPac", message.Messagebody, dbType: System.Data.DbType.String);
             p.Add("SenderEmailPac", message.Senderemail, dbType: System.Data.DbType.String);
+            p.Add("RecevieremailPac", message.Recevieremail, dbType: System.Data.DbType.String);
+
 
             var result = _context.connection.ExecuteAsync("MessagePackage.updateMessage", p, commandType: CommandType.StoredProcedure);
 

@@ -64,7 +64,7 @@ namespace ETreeks
 
             //Repository
             services.AddScoped<IRoleRepository, RoleRepository>();
-            services.AddScoped<ILocationRepository, LocationRepository>();
+
             services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -77,7 +77,6 @@ namespace ETreeks
             //Service
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IAccountService, AccountService>();
-            services.AddScoped<ILocationService, LocationService>();
             services.AddScoped<IAppointmentService, AppointmentService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ICourseService, CourseService>();
@@ -113,6 +112,7 @@ namespace ETreeks
                 RequestPath = new PathString("/StaticFiles")
             });
 
+            app.UseCors(options => options.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication(); //1
             app.UseAuthorization(); //2
 
