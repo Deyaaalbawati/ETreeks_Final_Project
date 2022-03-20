@@ -11,5 +11,9 @@ namespace ETreeks.Core.Service
         string deleteCourse(int id);
         string updateCourse(Course course);
         List<Course> getCourse();
+        List<Course> getCourseBasedCategory(int id);
+        List<Course> getCourseById(int id);
+
+
     }
 }
