@@ -22,6 +22,7 @@ namespace ETreeks.Controllers
             iJWTService = _iJWTService;
         }
         [HttpPost]
+        [Route("auth")]
         public IActionResult Auth([FromBody] Account account)
         {
             var token = iJWTService.Auth(account);
