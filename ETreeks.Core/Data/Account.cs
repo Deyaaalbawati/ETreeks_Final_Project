@@ -25,8 +25,6 @@ namespace WebApplication1.Models
         public string Hline { get; set; }
 
 
-
-
         public virtual Role Role { get; set; }
         public virtual ICollection<Appointment> Appointments { get; set; }
         public virtual ICollection<Course> Courses { get; set; }

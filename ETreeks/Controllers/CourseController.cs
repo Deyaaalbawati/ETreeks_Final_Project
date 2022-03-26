@@ -39,8 +39,21 @@ namespace ETreeks.Controllers
         }
 
 
+
+        [HttpGet("GetCourseBasedCategory/{id}")]
+        [ProducesResponseType(typeof(List<Course>), StatusCodes.Status200OK)]
+        [Route("GetCourseBasedCategory")]
+        public List<Course> getCourseBasedCategory(int id)
+        {
+            return _courseService.getCourseBasedCategory(id);
+        }
+
+
+
+
+
         [HttpGet]
-        [ProducesResponseType(typeof(List<Role>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<Course>), StatusCodes.Status200OK)]
         [Route("GetCourse")]
         public List<Course> getCourse()
         {

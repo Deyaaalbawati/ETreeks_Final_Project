@@ -32,6 +32,11 @@ namespace ETreeks.Infra.Service
 
         }
 
+        public List<Course> getCourseBasedCategory(int id)
+        {
+            return _courseRepository.getCourseBasedCategory(id);
+        }
+
         public string updateCourse(Course course)
         {
             return _courseRepository.updateCourse(course);
