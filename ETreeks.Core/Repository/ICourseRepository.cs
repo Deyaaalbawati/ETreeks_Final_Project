@@ -13,5 +13,9 @@ namespace ETreeks.Core.Repository
         List<Course> getCourse();
 
         List<Course> getCourseBasedCategory(int id);
+
+        List<Course> getCourseById(int id);
+
+
     }
 }
