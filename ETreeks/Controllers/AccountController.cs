@@ -20,12 +20,12 @@ namespace ETreeks.Controllers
         private readonly IAccountService _accountService;
         public AccountController(IAccountService iaccountService)
         {
-           
 
             _accountService = iaccountService;
         }
 
         String ProfilePicture;
+        String Certificate;
 
         [HttpPost]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
@@ -33,8 +33,6 @@ namespace ETreeks.Controllers
         [Route("CreateAccount")]
         public string createAccount([FromBody] Account account)
         {
-            //var profilePicure = UploadImage();
-            //account.Profilepicture = this.ProfilePicture;
             return _accountService.createAccount(account);
         }
 
@@ -96,8 +94,8 @@ namespace ETreeks.Controllers
 
         //I Edit this code. // Deyaa // Look at the create account //
         [HttpPost]
-        [ProducesResponseType(typeof(List<string>), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(List<string>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [Route("UploadImage")]
         public String UploadImage()
         {
@@ -111,7 +109,7 @@ namespace ETreeks.Controllers
                     file.CopyTo(stream);
                 }
 
-       
+
                 this.ProfilePicture = fileName;
                 return this.ProfilePicture;
 
@@ -123,29 +121,31 @@ namespace ETreeks.Controllers
         }
 
         [HttpPost, DisableRequestSizeLimit]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [Route("UploadCertificate")]
-        public Account UploadCertificate()
+        public String UploadCertificate()
         {
             try
             {
                 var file = Request.Form.Files[0];
                 var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-                var path = Path.Combine("StaticFiles", fileName);
+                var path = Path.Combine("Image", fileName);
                 using (var stream = new FileStream(path, FileMode.Create))
                 {
                     file.CopyTo(stream);
                 }
-                Account account2 = new Account();
-                account2.Certificate = fileName;
-                return account2;
+
+                this.Certificate = fileName;
+                return this.Certificate;
+
             }
             catch (Exception ex)
             {
                 return null;
             }
         }
-            
-        }
 
     }
+}
 

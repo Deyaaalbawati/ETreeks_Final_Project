@@ -116,7 +116,7 @@ namespace ETreeks
             app.UseAuthentication(); //1
             app.UseAuthorization(); //2
 
-            app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {

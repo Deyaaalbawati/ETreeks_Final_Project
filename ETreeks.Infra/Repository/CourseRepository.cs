@@ -59,6 +59,7 @@ namespace ETreeks.Infra.Repository
             return result.ToList();
         }
 
+
         public List<Course> getCourseById(int id)
         {
             var p = new DynamicParameters();

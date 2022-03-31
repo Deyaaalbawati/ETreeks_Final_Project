@@ -51,6 +51,7 @@ namespace ETreeks.Controllers
 
 
 
+
         [HttpGet("GetCourseById/{id}")]
         [ProducesResponseType(typeof(List<Course>), StatusCodes.Status200OK)]
         [Route("GetCourseById")]
@@ -62,9 +63,8 @@ namespace ETreeks.Controllers
 
 
 
-
         [HttpGet]
-        [ProducesResponseType(typeof(List<Role>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<Course>), StatusCodes.Status200OK)]
         [Route("GetCourse")]
         public List<Course> getCourse()
         {
