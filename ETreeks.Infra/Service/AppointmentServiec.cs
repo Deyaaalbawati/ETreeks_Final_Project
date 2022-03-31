@@ -10,7 +10,7 @@ namespace ETreeks.Infra.Service
     public class AppointmentService : IAppointmentService
     {
 
-        private readonly IAppointmentRepository _appointmentRepository;
+        private readonly IAppointmentRepository _appointmentRepository; 
         public AppointmentService(IAppointmentRepository iappointmentRepository)
         {
             _appointmentRepository = iappointmentRepository;

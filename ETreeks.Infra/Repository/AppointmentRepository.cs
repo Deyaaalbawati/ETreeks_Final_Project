@@ -30,6 +30,9 @@ namespace ETreeks.Infra.Repository
 
             p.Add("AppointmentStatusPac", appointment.Appointmentstatus, dbType: System.Data.DbType.String);
 
+            p.Add("HourePac", appointment.Appointmentstatus, dbType: System.Data.DbType.String);
+
+
             var result = _context.connection.ExecuteAsync("AppointmentPackage.createAppointment", p, commandType: CommandType.StoredProcedure);
 
             return "createAppointment Successed";
@@ -60,6 +63,9 @@ namespace ETreeks.Infra.Repository
             p.Add("EndDatePac", appointment.Enddate, dbType: System.Data.DbType.DateTime);
 
             p.Add("AppointmentStatusPac", appointment.Appointmentstatus, dbType: System.Data.DbType.String);
+
+            p.Add("HourePac", appointment.Appointmentstatus, dbType: System.Data.DbType.String);
+
 
             var result = _context.connection.ExecuteAsync("AppointmentPackage.updateAppointment", p, commandType: CommandType.StoredProcedure);
 

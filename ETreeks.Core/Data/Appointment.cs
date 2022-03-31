@@ -13,6 +13,8 @@ namespace WebApplication1.Models
         public DateTime? Startdate { get; set; }
         public DateTime? Enddate { get; set; }
         public string Appointmentstatus { get; set; }
+        public string? Houre { get; set; }
+
 
         public virtual Account Acoount { get; set; }
         public virtual Course Course { get; set; }
