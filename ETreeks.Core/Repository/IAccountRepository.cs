@@ -11,9 +11,12 @@ namespace ETreeks.Core.Repository
         string deleteAccount(int id);
         string updateAccount(Account account);
         List<Account> getAccount();
-        List<Account> searchTeacher(string TeacherName);
+        //List<Account> searchTeacher(string TeacherName);
         List<Account> getTeacher();
+        List<Account> searchTeacher(Account account);
         List<Account> getStudent();
+        int getNumberStudent();
+        int getNumberTeacher();
 
     }
 }

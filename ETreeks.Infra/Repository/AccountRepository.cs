@@ -67,19 +67,40 @@ namespace ETreeks.Infra.Repository
             return result.ToList();
         }
 
+        public int getNumberStudent()
+        {
+            IEnumerable<Account> result = _context.connection.Query<Account>("AccountPackage.getStudent", commandType: CommandType.StoredProcedure);
+            return result.ToList().Count();
+        }
+
+        public int getNumberTeacher()
+        {
+            IEnumerable<Account> result = _context.connection.Query<Account>("AccountPackage.getTeacher", commandType: CommandType.StoredProcedure);
+            return result.ToList().Count();
+        }
+
         public List<Account> getTeacher()
         {
             IEnumerable<Account> result = _context.connection.Query<Account>("AccountPackage.getTeacher", commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 
-        public List<Account> searchTeacher(string TeacherName)
+        
+        public List<Account> searchTeacher(Account account)
         {
             var p = new DynamicParameters();
-            p.Add("TeacherName", TeacherName, dbType: System.Data.DbType.String);
+            p.Add("TeacherName", account.Firstname, dbType: System.Data.DbType.String);
             var result = _context.connection.Query<Account>("AccountPackage.searchTeacher", p, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
+
+        //public List<WA_Course> GetByCourseName(WA_Course course)
+        //{
+        //    var p = new DynamicParameters();
+        //    p.Add("@Cname", course.CourseName, dbType: DbType.String, direction: ParameterDirection.Input);
+        //    IEnumerable<WA_Course> result = DbContext.Connection.Query<WA_Course>("WA_COURSE_PACKAGE.GetByCourseName", commandType: CommandType.StoredProcedure);
+        //    return result.ToList();
+        //}
 
         public string updateAccount(Account account)
         {
@@ -107,5 +128,7 @@ namespace ETreeks.Infra.Repository
 
             return "updateAccount Successed";
         }
+
+       
     }
 }

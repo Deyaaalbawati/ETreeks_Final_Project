@@ -41,14 +41,25 @@ namespace ETreeks.Infra.Service
             return _accountRepository.getTeacher();
         }
 
-        public List<Account> searchTeacher(string TeacherName)
+        public List<Account> searchTeacher(Account account)
         {
-            return _accountRepository.searchTeacher(TeacherName);
+            return _accountRepository.searchTeacher(account);
         }
 
         public string updateAccount(Account account)
         {
             return _accountRepository.updateAccount(account);
         }
+
+        public int getNumberStudent()
+        {
+            return _accountRepository.getNumberStudent();
+        }
+
+        public int getNumberTeacher()
+        {
+            return _accountRepository.getNumberStudent();
+        }
+        
     }
 }
