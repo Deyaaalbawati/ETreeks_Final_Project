@@ -64,7 +64,7 @@ namespace ETreeks.Controllers
             {
                 var file = Request.Form.Files[0];
                 var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-                var path = Path.Combine("Image", fileName);
+                var path = Path.Combine("C:\\Users\\My Laptop\\Desktop\\angular _ Dashboard\\Angular-Stable-ET\\src\\assets\\img", fileName);
                 using (var stream = new FileStream(path, FileMode.Create))
                 {
                     file.CopyTo(stream);

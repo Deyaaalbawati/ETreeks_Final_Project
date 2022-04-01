@@ -71,13 +71,25 @@ namespace ETreeks.Controllers
             return _accountService.getTeacher();
         }
 
+        [Route("getNumberStudent")]
+        public int getNumberStudent()
+        {
+            return _accountService.getNumberStudent();
+        }
+
+        [Route("getNumberTeacher")]
+        public int getNumberTeacher()
+        {
+            return _accountService.getNumberTeacher();
+        }
+
 
         [HttpGet("SearchTeacher/{TeacherName}")]
         [ProducesResponseType(typeof(List<Account>), StatusCodes.Status200OK)]
         [Route("SearchTeacher")]
-        public List<Account> searchTeacher(string TeacherName)
+        public List<Account> searchTeacher(Account account)
         {
-            return _accountService.searchTeacher(TeacherName);
+            return _accountService.searchTeacher(account);
         }
 
 
