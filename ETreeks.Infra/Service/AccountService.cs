@@ -55,5 +55,11 @@ namespace ETreeks.Infra.Service
         {
             return _accountRepository.updateAccount(account);
         }
+
+        List<Account> IAccountService.getTeacherById(int TeacherId)
+        {
+            return _accountRepository.getTeacherById(TeacherId);
+
+        }
     }
 }

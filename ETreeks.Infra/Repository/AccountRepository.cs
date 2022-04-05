@@ -81,6 +81,14 @@ namespace ETreeks.Infra.Repository
             return result.ToList();
         }
 
+        public List<Account> getTeacherById(int TeacherId)
+        {
+            var p = new DynamicParameters();
+            p.Add("TeacherIdPac", TeacherId, dbType: System.Data.DbType.Decimal);
+            var result = _context.connection.Query<Account>("AccountPackage.getTeacherById", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
         public List<Account> searchTeacher(string TeacherName)
         {
             var p = new DynamicParameters();
