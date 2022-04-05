@@ -61,6 +61,14 @@ namespace ETreeks.Infra.Repository
             return result.ToList();
         }
 
+        public List<Account> getAccountId(string Email)
+        {
+            var p = new DynamicParameters();
+            p.Add("EmailPac", Email, dbType: System.Data.DbType.String);
+            var result = _context.connection.Query<Account>("AccountPackage.getAccountId", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
         public List<Account> getStudent()
         {
             IEnumerable<Account> result = _context.connection.Query<Account>("AccountPackage.getStudent", commandType: CommandType.StoredProcedure);

@@ -93,6 +93,16 @@ namespace ETreeks.Controllers
         }
 
 
+        [HttpGet("GetAccountId/{Email}")]
+        [ProducesResponseType(typeof(List<Account>), StatusCodes.Status200OK)]
+        [Route("GetAccountId")]
+        public List<Account> getAccountId(string Email)
+        {
+            return _accountService.getAccountId(Email);
+        }
+
+
+
 
         [HttpPut]
         [ProducesResponseType(typeof(List<string>), StatusCodes.Status200OK)]
@@ -115,7 +125,8 @@ namespace ETreeks.Controllers
             {
                 var file = Request.Form.Files[0];
                 var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-                var path = Path.Combine("C:\\Users\\deeaa\\Desktop\\Tahalof\\Angular\\New-Template-Angular-Final-Project-ET-master\\src\\assets\\img", fileName);
+                var path = Path.Combine("C:\\Users\\deeaa\\Desktop\\Angular_ETreeks\\Angular-Stable-ET\\src\\assets\\img", fileName);
+
                 using (var stream = new FileStream(path, FileMode.Create))
                 {
                     file.CopyTo(stream);
