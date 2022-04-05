@@ -43,6 +43,11 @@ namespace ETreeks.Infra.Service
             return _courseRepository.getCourseById(id);
         }
 
+        public List<Course> getCourseByTeacherId(int TeacherId)
+        {
+            return _courseRepository.getCourseByTeacherId(TeacherId);
+        }
+
         public string updateCourse(Course course)
         {
             return _courseRepository.updateCourse(course);

@@ -14,5 +14,7 @@ namespace ETreeks.Core.Service
         List<Account> searchTeacher(string TeacherName);
         List<Account> getTeacher();
         List<Account> getStudent();
+        List<Account> getAccountId(string Email);
+
     }
 }

@@ -62,7 +62,6 @@ namespace ETreeks.Controllers
 
 
 
-
         [HttpGet]
         [ProducesResponseType(typeof(List<Course>), StatusCodes.Status200OK)]
         [Route("GetCourse")]
@@ -71,7 +70,21 @@ namespace ETreeks.Controllers
             return _courseService.getCourse();
         }
 
-        [HttpPut]
+
+
+        [HttpGet("GetCourseByTeacherId/{TeacherId}")]
+        [ProducesResponseType(typeof(List<Course>), StatusCodes.Status200OK)]
+        [Route("GetCourseByTeacherId")]
+        public List<Course> getCourseByTeacherId(int TeacherId)
+        {
+            return _courseService.getCourseByTeacherId(TeacherId);
+        }
+
+
+
+
+
+    [HttpPut]
         [ProducesResponseType(typeof(List<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(List<string>), StatusCodes.Status400BadRequest)]
         [Route("UpdateCourse")]
