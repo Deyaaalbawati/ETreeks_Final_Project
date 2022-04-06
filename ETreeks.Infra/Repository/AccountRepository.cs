@@ -1,4 +1,4 @@
-﻿using Dapper;
+using Dapper;
 using ETreeks.Core.Common;
 using ETreeks.Core.Repository;
 using System;

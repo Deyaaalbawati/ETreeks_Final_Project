@@ -11,7 +11,7 @@ namespace WebApplication1.Models
         public decimal Categoryid { get; set; }
         public string Categoryname { get; set; }
         public string Categorydescription { get; set; }
-        public string Categoryimage { get; set; }
+        public string ?Categoryimage { get; set; }
 
         public virtual ICollection<Course> Courses { get; set; }
     }

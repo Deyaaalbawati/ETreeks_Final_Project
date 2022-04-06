@@ -40,7 +40,7 @@ namespace ETreeks.Controllers
         [Route("SendEmail")]
         public string SendEmail([FromBody] Email email)
         {
-            MimeMessage message = new MimeMessage(); 
+            MimeMessage message = new MimeMessage();
             MailboxAddress mailFrom = new MailboxAddress("Etreeks", email.EmailFrom); //email from
             message.From.Add(mailFrom);
             
@@ -53,11 +53,10 @@ namespace ETreeks.Controllers
             bodyBuilder.HtmlBody = "<h4>Dear Teacher</h4>" +
                 "Regards" +
                 "Your Order is" +
-                "<p style=\"color:blue\">"+ email.textMsg +"</p>";
+                "<p style=\"color:blue\">"+email.textMsg+"</p>";
             message.Body = bodyBuilder.ToMessageBody();
 
             bodyBuilder.HtmlBody = email.textMsg;
-
 
             using (var client = new SmtpClient())
             {
