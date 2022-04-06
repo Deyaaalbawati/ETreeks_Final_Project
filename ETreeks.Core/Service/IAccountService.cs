@@ -16,6 +16,8 @@ namespace ETreeks.Core.Service
         List<Account> getStudent();
 
         List<Account> getAccountId(string Email);
+        List<Account> getTeacherById(int TeacherId);
+
 
         int getNumberStudent();
         int getNumberTeacher();

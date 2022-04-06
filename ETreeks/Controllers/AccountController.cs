@@ -102,6 +102,15 @@ namespace ETreeks.Controllers
         }
 
 
+        [HttpGet("GetTeacherById/{TeacherId}")]
+        [ProducesResponseType(typeof(List<Account>), StatusCodes.Status200OK)]
+        [Route("GetTeacherById")]
+        public List<Account> getTeacherById(int TeacherId)
+        {
+            return _accountService.getTeacherById(TeacherId);
+        }
+
+
 
 
         [HttpPut]
