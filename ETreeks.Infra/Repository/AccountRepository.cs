@@ -69,6 +69,18 @@ namespace ETreeks.Infra.Repository
             return result.ToList();
         }
 
+        public int getNumberStudent()
+        {
+            IEnumerable<Account> result = _context.connection.Query<Account>("AccountPackage.getStudent", commandType: CommandType.StoredProcedure);
+            return result.ToList().Count();
+        }
+
+        public int getNumberTeacher()
+        {
+            IEnumerable<Account> result = _context.connection.Query<Account>("AccountPackage.getTeacher", commandType: CommandType.StoredProcedure);
+            return result.ToList().Count();
+        }
+
         public List<Account> getStudent()
         {
             IEnumerable<Account> result = _context.connection.Query<Account>("AccountPackage.getStudent", commandType: CommandType.StoredProcedure);
