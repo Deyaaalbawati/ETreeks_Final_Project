@@ -46,6 +46,12 @@ namespace ETreeks.Infra.Repository
             return result.ToList();
         }
 
+        public int getNumberCategory()
+        {
+            IEnumerable<Category> result = _context.connection.Query<Category>("CategoryPackage.getCategory", commandType: CommandType.StoredProcedure);
+            return result.ToList().Count();
+        }
+
         public string updateCategory(Category category)
         {
             var p = new DynamicParameters();

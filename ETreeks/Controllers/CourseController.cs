@@ -60,6 +60,14 @@ namespace ETreeks.Controllers
             return _courseService.getCourse();
         }
 
+        [HttpGet]
+        [ProducesResponseType(typeof(List<Course>), StatusCodes.Status200OK)]
+        [Route("getNumberCourse")]
+        public int getNumberCourse()
+        {
+            return _courseService.getNumberCourse();
+        }
+
         [HttpPut]
         [ProducesResponseType(typeof(List<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(List<string>), StatusCodes.Status400BadRequest)]

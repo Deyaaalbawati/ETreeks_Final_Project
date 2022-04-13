@@ -36,5 +36,10 @@ namespace ETreeks.Infra.Service
         {
             return _categoryRepository.updateCategory(category);
         }
+
+        public int getNumberCategory()
+        {
+            return _categoryRepository.getNumberCategory();
+        }
     }
 }

@@ -68,5 +68,39 @@ namespace ETreeks.Controllers
 
             return "SendEmail";
         }
+
+        [HttpPost]
+        [Route("SendEmailContact")]
+
+        public string SendEmailContact([FromBody] Email email)
+        {
+            MimeMessage message = new MimeMessage();
+            MailboxAddress mailFrom = new MailboxAddress("Etreeks", email.EmailFrom); //email from
+            message.From.Add(mailFrom);
+
+            MailboxAddress mailTo = new MailboxAddress("Teacher", email.EmailTo); //email from
+            message.To.Add(mailTo);
+            //subject
+            message.Subject = "Etreeks Contact";
+            //body
+            BodyBuilder bodyBuilder = new BodyBuilder();
+            bodyBuilder.HtmlBody = "<h4>Hello</h4>" +
+                "Regards" +
+                "<p style=\"color:blue\">" + email.textMsg + "</p>";
+            message.Body = bodyBuilder.ToMessageBody();
+
+
+            bodyBuilder.HtmlBody = email.textMsg;
+
+            using (var client = new SmtpClient())
+            {
+                client.Connect("smtp.gmail.com", 465, true);
+                client.Authenticate(email.EmailFrom, email.Password);
+                client.Send(message);
+                client.Disconnect(true);
+            }
+
+            return "SendEmail";
+        }
     }
 }

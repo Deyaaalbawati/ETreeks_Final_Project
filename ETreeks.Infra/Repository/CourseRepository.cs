@@ -51,6 +51,12 @@ namespace ETreeks.Infra.Repository
             return result.ToList();
         }
 
+        public int getNumberCourse()
+        {
+            IEnumerable<Course> result = _context.connection.Query<Course>("CoursePackage.getCourse", commandType: CommandType.StoredProcedure);
+            return result.ToList().Count();
+        }
+
         public List<Course> getCourseBasedCategory(int id)
         {
             var p = new DynamicParameters();

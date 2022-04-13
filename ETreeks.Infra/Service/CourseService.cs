@@ -32,6 +32,11 @@ namespace ETreeks.Infra.Service
 
         }
 
+        public int getNumberCourse()
+        {
+            return _courseRepository.getNumberCourse();
+        }
+
         public List<Course> getCourseBasedCategory(int id)
         {
             return _courseRepository.getCourseBasedCategory(id);
