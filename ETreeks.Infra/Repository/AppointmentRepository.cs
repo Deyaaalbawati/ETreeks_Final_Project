@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using ETreeks.Core.Common;
+using ETreeks.Core.DTO;
 using ETreeks.Core.Repository;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,9 @@ namespace ETreeks.Infra.Repository
 
             p.Add("AppointmentStatusPac", appointment.Appointmentstatus, dbType: System.Data.DbType.String);
 
+            p.Add("HourePac", appointment.Houre, dbType: System.Data.DbType.String);
+
+
             var result = _context.connection.ExecuteAsync("AppointmentPackage.createAppointment", p, commandType: CommandType.StoredProcedure);
 
             return "createAppointment Successed";
@@ -49,6 +53,22 @@ namespace ETreeks.Infra.Repository
             return result.ToList();
         }
 
+        public List<Appointment> getAppointmentByAccountId(int AccountId)
+        {
+            var p = new DynamicParameters();
+            p.Add("AccountIdPac", AccountId, dbType: System.Data.DbType.Decimal);
+            var result = _context.connection.Query<Appointment>("AppointmentPackage.getAppointmentByAccountId", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
+        public List<Appointment> getAppointmentByCourseId(int CourseId)
+        {
+            var p = new DynamicParameters();
+            p.Add("CourseIdPac", CourseId, dbType: System.Data.DbType.Decimal);
+            var result = _context.connection.Query<Appointment>("AppointmentPackage.getAppointmentByCourseId", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
         public string updateAppointment(Appointment appointment)
         {
             var p = new DynamicParameters();
@@ -61,9 +81,29 @@ namespace ETreeks.Infra.Repository
 
             p.Add("AppointmentStatusPac", appointment.Appointmentstatus, dbType: System.Data.DbType.String);
 
+            p.Add("HourePac", appointment.Houre, dbType: System.Data.DbType.String);
+
+
             var result = _context.connection.ExecuteAsync("AppointmentPackage.updateAppointment", p, commandType: CommandType.StoredProcedure);
 
             return "updateAppointment Successed";
+        }
+
+        public List<AppointmentTeacher> getAppintmentTeacher(int Courseid)
+        {
+            var p = new DynamicParameters();
+            p.Add("CourseIdPac",Courseid, dbType: System.Data.DbType.Decimal);
+            IEnumerable<AppointmentTeacher> result = _context.connection.Query<AppointmentTeacher>("AppintmentTeacher", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
+
+        public List<TeacherDashboardAppintment> getTeacherDashboardAppintment(int TeacherId)
+        {
+            var p = new DynamicParameters();
+            p.Add("TeacherIdPac", TeacherId, dbType: System.Data.DbType.Decimal);
+            IEnumerable<TeacherDashboardAppintment> result = _context.connection.Query<TeacherDashboardAppintment>("TeacherDashboardAppintment", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
         }
     }
 }

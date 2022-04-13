@@ -1,4 +1,4 @@
-﻿using ETreeks.Core.Repository;
+using ETreeks.Core.Repository;
 using ETreeks.Core.Service;
 using System;
 using System.Collections.Generic;
@@ -31,6 +31,11 @@ namespace ETreeks.Infra.Service
             return _accountRepository.getAccount();
         }
 
+        public List<Account> getAccountId(string Email)
+        {
+            return _accountRepository.getAccountId(Email);
+        }
+
         public List<Account> getStudent()
         {
             return _accountRepository.getStudent();
@@ -51,15 +56,10 @@ namespace ETreeks.Infra.Service
             return _accountRepository.updateAccount(account);
         }
 
-        public int getNumberStudent()
+        List<Account> IAccountService.getTeacherById(int TeacherId)
         {
-            return _accountRepository.getNumberStudent();
-        }
+            return _accountRepository.getTeacherById(TeacherId);
 
-        public int getNumberTeacher()
-        {
-            return _accountRepository.getNumberStudent();
         }
-        
     }
 }

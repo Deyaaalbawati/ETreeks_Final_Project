@@ -1,4 +1,4 @@
-﻿using ETreeks.Core.Service;
+using ETreeks.Core.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -52,6 +52,16 @@ namespace ETreeks.Controllers
 
 
 
+        [HttpGet("GetCourseById/{id}")]
+        [ProducesResponseType(typeof(List<Course>), StatusCodes.Status200OK)]
+        [Route("GetCourseById")]
+        public List<Course> getCourseById(int id)
+        {
+            return _courseService.getCourseById(id);
+        }
+
+
+
         [HttpGet]
         [ProducesResponseType(typeof(List<Course>), StatusCodes.Status200OK)]
         [Route("GetCourse")]
@@ -69,6 +79,23 @@ namespace ETreeks.Controllers
         }
 
         [HttpPut]
+
+
+
+        [HttpGet("GetCourseByTeacherId/{TeacherId}")]
+        [ProducesResponseType(typeof(List<Course>), StatusCodes.Status200OK)]
+        [Route("GetCourseByTeacherId")]
+        public List<Course> getCourseByTeacherId(int TeacherId)
+        {
+            return _courseService.getCourseByTeacherId(TeacherId);
+        }
+
+
+
+
+
+    [HttpPut]
+
         [ProducesResponseType(typeof(List<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(List<string>), StatusCodes.Status400BadRequest)]
         [Route("UpdateCourse")]
