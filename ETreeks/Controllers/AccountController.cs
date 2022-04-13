@@ -87,9 +87,9 @@ namespace ETreeks.Controllers
         [HttpGet("SearchTeacher/{TeacherName}")]
         [ProducesResponseType(typeof(List<Account>), StatusCodes.Status200OK)]
         [Route("SearchTeacher")]
-        public List<Account> searchTeacher(Account account)
+        public List<Account> searchTeacher(string TeacherName)
         {
-            return _accountService.searchTeacher(account);
+            return _accountService.searchTeacher(TeacherName);
         }
 
 

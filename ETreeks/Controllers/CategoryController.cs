@@ -47,6 +47,14 @@ namespace ETreeks.Controllers
             return _categoryService.getCategory();
         }
 
+        [HttpGet]
+        [ProducesResponseType(typeof(List<Category>), StatusCodes.Status200OK)]
+        [Route("getNumberCategory")]
+        public int getNumberCategory()
+        {
+            return _categoryService.getNumberCategory();
+        }
+
         [HttpPut]
         [ProducesResponseType(typeof(List<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(List<string>), StatusCodes.Status400BadRequest)]
@@ -64,7 +72,8 @@ namespace ETreeks.Controllers
             {
                 var file = Request.Form.Files[0];
                 var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-                var path = Path.Combine("Image", fileName);
+                var path = Path.Combine("C:\\Users\\My Laptop\\Desktop\\angular_Dashboard\\Angular-Stable-ET\\src\\assets\\img", fileName);
+            
                 using (var stream = new FileStream(path, FileMode.Create))
                 {
                     file.CopyTo(stream);

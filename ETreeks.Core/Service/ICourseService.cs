@@ -12,11 +12,8 @@ namespace ETreeks.Core.Service
         string updateCourse(Course course);
         List<Course> getCourse();
         List<Course> getCourseBasedCategory(int id);
+        int getNumberCourse();
         List<Course> getCourseById(int id);
         List<Course> getCourseByTeacherId(int TeacherId);
-
-
-
-
     }
 }
