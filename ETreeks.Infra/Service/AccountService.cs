@@ -36,6 +36,16 @@ namespace ETreeks.Infra.Service
             return _accountRepository.getAccountId(Email);
         }
 
+        public int getNumberStudent()
+        {
+            return _accountRepository.getNumberStudent();
+        }
+
+        public int getNumberTeacher()
+        {
+            return _accountRepository.getNumberTeacher();
+        }
+
         public List<Account> getStudent()
         {
             return _accountRepository.getStudent();
