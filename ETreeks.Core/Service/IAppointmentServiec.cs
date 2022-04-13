@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ETreeks.Core.DTO;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using WebApplication1.Models;
@@ -11,6 +12,13 @@ namespace ETreeks.Core.Service
         string deleteAppointment(int id);
         string updateAppointment(Appointment appointment);
         List<Appointment> getAppointment();
+        List<Appointment> getAppointmentByAccountId(int AccountId);
+        List<Appointment> getAppointmentByCourseId(int CourseId);
+        public List<AppointmentTeacher> getAppintmentTeacher(int Courseid);
+
+        public List<TeacherDashboardAppintment> getTeacherDashboardAppintment(int TeacherId);
+
+
 
     }
 }
