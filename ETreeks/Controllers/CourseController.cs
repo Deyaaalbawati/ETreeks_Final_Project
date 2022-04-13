@@ -1,4 +1,4 @@
-﻿using ETreeks.Core.Service;
+using ETreeks.Core.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -70,6 +70,16 @@ namespace ETreeks.Controllers
             return _courseService.getCourse();
         }
 
+        [HttpGet]
+        [ProducesResponseType(typeof(List<Course>), StatusCodes.Status200OK)]
+        [Route("getNumberCourse")]
+        public int getNumberCourse()
+        {
+            return _courseService.getNumberCourse();
+        }
+
+        [HttpPut]
+
 
 
         [HttpGet("GetCourseByTeacherId/{TeacherId}")]
@@ -85,6 +95,7 @@ namespace ETreeks.Controllers
 
 
     [HttpPut]
+
         [ProducesResponseType(typeof(List<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(List<string>), StatusCodes.Status400BadRequest)]
         [Route("UpdateCourse")]

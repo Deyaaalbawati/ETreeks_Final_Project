@@ -11,5 +11,6 @@ namespace ETreeks.Core.Repository
         string deleteCategory(int id);
         string updateCategory(Category category);
         List<Category> getCategory ();
+        int getNumberCategory();
     }
 }
