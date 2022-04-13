@@ -1,4 +1,5 @@
-﻿using ETreeks.Core.Service;
+﻿using ETreeks.Core.DTO;
+using ETreeks.Core.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -53,5 +54,44 @@ namespace ETreeks.Controllers
         {
             return _appointmentService.updateAppointment(appointment);
         }
+
+
+
+        [HttpGet("GetAppointmentByAccountId/{AccountId}")]
+        [ProducesResponseType(typeof(List<Appointment>), StatusCodes.Status200OK)]
+        [Route("GetAppointmentByAccountId")]
+        public List<Appointment> getAppointmentByAccountId(int AccountId)
+        {
+            return _appointmentService.getAppointmentByAccountId(AccountId);
+        }
+
+
+        [HttpGet("GetAppointmentByCourseId/{CourseId}")]
+        [ProducesResponseType(typeof(List<Appointment>), StatusCodes.Status200OK)]
+        [Route("GetAppointmentByCourseId")]
+        public List<Appointment> getAppointmentByCourseId(int CourseId)
+        {
+            return _appointmentService.getAppointmentByCourseId(CourseId);
+        }
+
+
+
+        [HttpGet("GetAppointmentTeacher/{CourseId}")]
+        [ProducesResponseType(typeof(List<AppointmentTeacher>), StatusCodes.Status200OK)]
+        [Route("GetAppointmentTeacher")]
+        public List<AppointmentTeacher> getAppintmentTeacher(int CourseId)
+        {
+            return _appointmentService.getAppintmentTeacher(CourseId);
+        }
+
+        [HttpGet("TeacherDashboardAppintment/{TeacherId}")]
+        [ProducesResponseType(typeof(List<TeacherDashboardAppintment>), StatusCodes.Status200OK)]
+        [Route("TeacherDashboardAppintment")]
+        public List<TeacherDashboardAppintment> getTeacherDashboardAppintment(int TeacherId)
+        {
+            return _appointmentService.getTeacherDashboardAppintment(TeacherId);
+        }
+
+
     }
 }

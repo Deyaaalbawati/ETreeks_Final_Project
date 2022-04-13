@@ -1,4 +1,5 @@
-﻿using ETreeks.Core.Repository;
+﻿using ETreeks.Core.DTO;
+using ETreeks.Core.Repository;
 using ETreeks.Core.Service;
 using System;
 using System.Collections.Generic;
@@ -31,9 +32,32 @@ namespace ETreeks.Infra.Service
             return _appointmentRepository.getAppointment();
         }
 
+        public List<Appointment> getAppointmentByAccountId(int AccountId)
+        {
+            return _appointmentRepository.getAppointmentByAccountId(AccountId);
+        }
+
+
+        public List<Appointment> getAppointmentByCourseId(int CourseId)
+        {
+            return _appointmentRepository.getAppointmentByCourseId(CourseId);
+        }
+
         public string updateAppointment(Appointment appointment)
         {
             return _appointmentRepository.updateAppointment(appointment);
+        }
+
+        public List<AppointmentTeacher> getAppintmentTeacher(int Courseid)
+        {
+            return _appointmentRepository.getAppintmentTeacher(Courseid);
+        }
+
+  
+
+        public List<TeacherDashboardAppintment> getTeacherDashboardAppintment(int TeacherId)
+        {
+            return _appointmentRepository.getTeacherDashboardAppintment(TeacherId);
         }
     }
 }
