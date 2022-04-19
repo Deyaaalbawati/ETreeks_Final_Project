@@ -33,6 +33,7 @@ namespace ETreeks.Controllers
         [Route("CreateAccount")]
         public string createAccount([FromBody] Account account)
         {
+           
             return _accountService.createAccount(account);
         }
 
@@ -133,18 +134,15 @@ namespace ETreeks.Controllers
             try
             {
                 var file = Request.Form.Files[0];
-                var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-                var path = Path.Combine("C:\\Users\\deeaa\\Desktop\\Angular_ETreeks\\Angular-Stable-ET\\src\\assets\\img", fileName);
-
+                var fileName = file.FileName;
+                var path = Path.Combine("C:\\Users\\deeaa\\Desktop\\Angular_ETreeks\\Angular-Stable-ET\\src\\assets\\img",fileName);
                 using (var stream = new FileStream(path, FileMode.Create))
                 {
                     file.CopyTo(stream);
                 }
 
-
                 this.ProfilePicture = fileName;
-                return this.ProfilePicture;
-
+                return fileName;
             }
             catch (Exception ex)
             {

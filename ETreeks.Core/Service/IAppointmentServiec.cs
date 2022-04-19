@@ -11,6 +11,7 @@ namespace ETreeks.Core.Service
         string createAppointment(Appointment appointment);
         string deleteAppointment(int id);
         string updateAppointment(Appointment appointment);
+        string updateAppointmentStatus(int appointmentId, string appointmentStatus);
         List<Appointment> getAppointment();
         List<Appointment> getAppointmentByAccountId(int AccountId);
         List<Appointment> getAppointmentByCourseId(int CourseId);

@@ -11,7 +11,7 @@ using WebApplication1.Models;
 
 namespace ETreeks.Infra.Repository
 {
-   public class AppointmentRepository : IAppointmentRepository
+    public class AppointmentRepository : IAppointmentRepository
     {
 
         private readonly IDbContext _context;
@@ -89,10 +89,21 @@ namespace ETreeks.Infra.Repository
             return "updateAppointment Successed";
         }
 
+        public string updateAppointmentStatus(int appointmentId, string appointmentStatus)
+        {
+            var p = new DynamicParameters();
+            p.Add("AppointmentIdPac", appointmentId, dbType: System.Data.DbType.Decimal);
+            p.Add("AppointmentStatusPac", appointmentStatus, dbType: System.Data.DbType.String);
+
+            var result = _context.connection.ExecuteAsync("AppointmentPackage.updateAppointmentStatus", p, commandType: CommandType.StoredProcedure);
+            return "updateAppointment Status Successed";
+        }
+
+
         public List<AppointmentTeacher> getAppintmentTeacher(int Courseid)
         {
             var p = new DynamicParameters();
-            p.Add("CourseIdPac",Courseid, dbType: System.Data.DbType.Decimal);
+            p.Add("CourseIdPac", Courseid, dbType: System.Data.DbType.Decimal);
             IEnumerable<AppointmentTeacher> result = _context.connection.Query<AppointmentTeacher>("AppintmentTeacher", p, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
@@ -105,5 +116,6 @@ namespace ETreeks.Infra.Repository
             IEnumerable<TeacherDashboardAppintment> result = _context.connection.Query<TeacherDashboardAppintment>("TeacherDashboardAppintment", p, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
+
     }
 }
