@@ -57,6 +57,18 @@ namespace ETreeks.Controllers
 
 
 
+        [HttpPut]
+        [ProducesResponseType(typeof(List<string>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<string>), StatusCodes.Status400BadRequest)]
+        [Route("UpdateAppointmentStatus/{appointmentid}/{appointmentstatus}")]
+        public string updateAppointmentStatus( int appointmentid, string appointmentstatus)
+        {
+            return _appointmentService.updateAppointmentStatus(appointmentid, appointmentstatus);
+        }
+
+
+
+
         [HttpGet("GetAppointmentByAccountId/{AccountId}")]
         [ProducesResponseType(typeof(List<Appointment>), StatusCodes.Status200OK)]
         [Route("GetAppointmentByAccountId")]

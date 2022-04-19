@@ -59,5 +59,10 @@ namespace ETreeks.Infra.Service
         {
             return _appointmentRepository.getTeacherDashboardAppintment(TeacherId);
         }
+
+        public string updateAppointmentStatus(int appointmentId, string appointmentStatus)
+        {
+            return _appointmentRepository.updateAppointmentStatus(appointmentId, appointmentStatus);
+        }
     }
 }
