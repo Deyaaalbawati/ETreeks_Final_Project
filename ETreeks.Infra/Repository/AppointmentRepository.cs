@@ -127,5 +127,13 @@ namespace ETreeks.Infra.Repository
             IEnumerable<SerachBetweenTwoDate> result = _context.connection.Query<SerachBetweenTwoDate>("SearchBetweenTwoDate", p, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
+
+        public List<StudentAppointment> getStudentAppintment(int StudentId)
+        {
+            var p = new DynamicParameters();
+            p.Add("StudentIdPac", StudentId, dbType: System.Data.DbType.Decimal);
+            IEnumerable<StudentAppointment> result = _context.connection.Query<StudentAppointment>("StudentAppointment", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
     }
 }

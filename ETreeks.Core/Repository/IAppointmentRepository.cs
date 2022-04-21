@@ -20,7 +20,7 @@ namespace ETreeks.Core.Repository
         public List<SerachBetweenTwoDate> SerachBetweenTwoDate(int TeacherId ,DateTime StartDate , DateTime EndDate);
 
         public List<TeacherDashboardAppintment> getTeacherDashboardAppintment(int TeacherId);
-
+        public List<StudentAppointment> getStudentAppintment(int StudentId);
 
     }
 }
