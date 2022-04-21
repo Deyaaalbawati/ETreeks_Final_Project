@@ -69,5 +69,10 @@ namespace ETreeks.Infra.Service
         {
             return _appointmentRepository.SerachBetweenTwoDate(TeacherId, StartDate, EndDate);
         }
+
+        public List<StudentAppointment> getStudentAppintment(int StudentId) {
+            return _appointmentRepository.getStudentAppintment(StudentId);
+        }
+
     }
 }
