@@ -104,6 +104,14 @@ namespace ETreeks.Controllers
             return _appointmentService.getTeacherDashboardAppintment(TeacherId);
         }
 
+        [HttpGet("SerachBetweenTwoDate/{TeacherId}/{StartDate}/{EndDate}")]
+        [ProducesResponseType(typeof(List<SerachBetweenTwoDate>), StatusCodes.Status200OK)]
+        [Route("SerachBetweenTwoDate")]
+        public List<SerachBetweenTwoDate> SerachBetweenTwoDate(int TeacherId,DateTime StartDate,DateTime EndDate)
+        {
+            return _appointmentService.SerachBetweenTwoDate(TeacherId, StartDate, EndDate);
+        }
+
 
     }
 }

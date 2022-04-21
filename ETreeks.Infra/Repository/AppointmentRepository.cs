@@ -117,5 +117,15 @@ namespace ETreeks.Infra.Repository
             return result.ToList();
         }
 
+        public List<SerachBetweenTwoDate> SerachBetweenTwoDate(int TeacherId, DateTime StartDate, DateTime EndDate)
+        {
+            var p = new DynamicParameters();
+            p.Add("TeacherIdPac", TeacherId, dbType: System.Data.DbType.Decimal);
+            p.Add("StartDatePac", StartDate, dbType: System.Data.DbType.DateTime);
+            p.Add("EndDatePac", EndDate, dbType: System.Data.DbType.DateTime);
+
+            IEnumerable<SerachBetweenTwoDate> result = _context.connection.Query<SerachBetweenTwoDate>("SearchBetweenTwoDate", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
     }
 }
