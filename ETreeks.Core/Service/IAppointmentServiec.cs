@@ -18,6 +18,8 @@ namespace ETreeks.Core.Service
         public List<AppointmentTeacher> getAppintmentTeacher(int Courseid);
 
         public List<TeacherDashboardAppintment> getTeacherDashboardAppintment(int TeacherId);
+        public List<SerachBetweenTwoDate> SerachBetweenTwoDate(int TeacherId, DateTime StartDate, DateTime EndDate);
+
 
 
 

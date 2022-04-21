@@ -16,8 +16,8 @@ namespace ETreeks.Core.Repository
         List<Appointment> getAppointmentByAccountId(int AccountId);
         List<Appointment> getAppointmentByCourseId(int CourseId);
         public List<AppointmentTeacher> getAppintmentTeacher(int Courseid);
-         
 
+        public List<SerachBetweenTwoDate> SerachBetweenTwoDate(int TeacherId ,DateTime StartDate , DateTime EndDate);
 
         public List<TeacherDashboardAppintment> getTeacherDashboardAppintment(int TeacherId);
 

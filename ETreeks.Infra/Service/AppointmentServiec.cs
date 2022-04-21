@@ -64,5 +64,10 @@ namespace ETreeks.Infra.Service
         {
             return _appointmentRepository.updateAppointmentStatus(appointmentId, appointmentStatus);
         }
+
+        public List<SerachBetweenTwoDate> SerachBetweenTwoDate(int TeacherId, DateTime StartDate, DateTime EndDate)
+        {
+            return _appointmentRepository.SerachBetweenTwoDate(TeacherId, StartDate, EndDate);
+        }
     }
 }
