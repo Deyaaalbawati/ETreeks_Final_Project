@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using ETreeks.Core.Common;
+using ETreeks.Core.DTO;
 using ETreeks.Core.Repository;
 using System;
 using System.Collections.Generic;
@@ -22,8 +23,9 @@ namespace ETreeks.Infra.Repository
 
         public string createTestmonial(Testmonial testmonial)
         {
-            var p = new DynamicParameters();
 
+            var p = new DynamicParameters();
+            p.Add("TestmonialIdPac", testmonial.Testmonialid, dbType: System.Data.DbType.Decimal);
             p.Add("AcoountIdPac", testmonial.Acoountid, dbType: System.Data.DbType.Decimal);
             p.Add("TestmonialCommentPac", testmonial.Testmonialcomment, dbType: System.Data.DbType.String);
             p.Add("RatePac", testmonial.Testmonialstatus, dbType: System.Data.DbType.Decimal);
@@ -47,6 +49,15 @@ namespace ETreeks.Infra.Repository
             IEnumerable<Testmonial> result = _context.connection.Query<Testmonial>("TestmonialPackage.getTestmonial", commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
+
+        public List<TestmonialAccount> getTestmonialAccount()
+        {
+            IEnumerable<TestmonialAccount> result = _context.connection.Query<TestmonialAccount>("TestmonialAccount",  commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
+
+
 
         public string updateTestmonial(Testmonial testmonial)
         {

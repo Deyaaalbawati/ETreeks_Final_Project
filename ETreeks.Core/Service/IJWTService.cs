@@ -8,5 +8,7 @@ namespace ETreeks.Core.Service
     public interface IJWTService
     {
         string Auth(Account account);
+        string AuthStudent(Account account);
+
     }
 }

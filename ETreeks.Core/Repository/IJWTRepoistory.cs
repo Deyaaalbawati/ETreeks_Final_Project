@@ -9,5 +9,7 @@ namespace ETreeks.Core.Repository
     public interface IJWTRepoistory
     {
         LoginDTO Auth(Account account);
+        LoginDTO AuthStudent(Account account);
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using ETreeks.Core.Service;
+﻿using ETreeks.Core.DTO;
+using ETreeks.Core.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -54,6 +55,15 @@ namespace ETreeks.Controllers
         public string updateTestmonial([FromBody] Testmonial testmonial)
         {
             return _testmonialService.updateTestmonial(testmonial);
+        }
+
+
+        [HttpGet("GetTestmonialAccount")]
+        [ProducesResponseType(typeof(List<TestmonialAccount>), StatusCodes.Status200OK)]
+        [Route("GetTestmonialAccount")]
+        public List<TestmonialAccount> getTestmonialAccount()
+        {
+            return _testmonialService.getTestmonialAccount();
         }
 
     }

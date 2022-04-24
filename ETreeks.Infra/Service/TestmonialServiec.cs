@@ -1,4 +1,5 @@
-﻿using ETreeks.Core.Repository;
+﻿using ETreeks.Core.DTO;
+using ETreeks.Core.Repository;
 using ETreeks.Core.Service;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,11 @@ namespace ETreeks.Infra.Service
         public List<Testmonial> getTestmonial()
         {
             return _testmonialRepository.getTestmonial();
+        }
+
+        public List<TestmonialAccount> getTestmonialAccount()
+        {
+            return _testmonialRepository.getTestmonialAccount();
         }
 
         public string updateTestmonial(Testmonial testmonial)

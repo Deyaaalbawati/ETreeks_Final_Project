@@ -21,6 +21,8 @@ namespace ETreeks.Controllers
         {
             iJWTService = _iJWTService;
         }
+
+
         [HttpPost]
         [Route("auth")]
         public IActionResult Auth([FromBody] Account account)
@@ -35,6 +37,25 @@ namespace ETreeks.Controllers
                 return Ok(token);
             }
         }
+
+
+
+
+        [HttpPost]
+        [Route("authStudent")]
+        public IActionResult AuthStudent([FromBody] Account account)
+        {
+            var token = iJWTService.AuthStudent(account);
+            if (token == null)
+            {
+                return Unauthorized();
+            }
+            else
+            {
+                return Ok(token);
+            }
+        }
+
 
         [HttpPost]
         [Route("SendEmail")]
