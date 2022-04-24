@@ -36,6 +36,41 @@ namespace ETreeks.Infra.Service
                     Subject = new ClaimsIdentity(new Claim[] {
                     new Claim(ClaimTypes.Email,result.Email),
                     new Claim(ClaimTypes.Role,result.RoleName),
+                    new Claim(ClaimTypes.Actor,result.Accountstatus),
+
+                    //new Claim(ClaimTypes.Name,result.FirstName),
+
+                    //new Claim(ClaimTypes.Name,result.FirstName) //deyaa 
+
+                    }),
+                    Expires = DateTime.UtcNow.AddYears(1),
+                    SigningCredentials = new SigningCredentials(tokenKey, SecurityAlgorithms.HmacSha256)
+                };
+                var token = tokenhandler.CreateToken(tokendescriptor);
+                return tokenhandler.WriteToken(token);
+            }
+        }
+        public string AuthStudent(Account account)
+        {
+            var result = iJWTRepoistory.Auth(account);
+            if (result == null)
+            {
+                return null;
+            }
+            else
+            {
+
+                var tokenhandler = new JwtSecurityTokenHandler();
+
+                var tokenKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("[SECRET USED TO SIGN AND VERIFY JWT TOKENS, IT CAN BE ANY STRING]"));
+
+                var tokendescriptor = new SecurityTokenDescriptor()
+                {
+                    Subject = new ClaimsIdentity(new Claim[] {
+                    new Claim(ClaimTypes.Email,result.Email),
+                    new Claim(ClaimTypes.Role,result.RoleName),
+                    //new Claim(ClaimTypes.Actor,result.Accountstatus),
+
                     //new Claim(ClaimTypes.Name,result.FirstName),
 
                     //new Claim(ClaimTypes.Name,result.FirstName) //deyaa 

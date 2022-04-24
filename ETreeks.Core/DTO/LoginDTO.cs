@@ -10,5 +10,7 @@ namespace ETreeks.Core.DTO
         public string RoleName { get; set; }
         public string FirstName { get; set; }
         public decimal Acoountid { get; set; }
+        public string Accountstatus { get; set; }
+
     }
 }
