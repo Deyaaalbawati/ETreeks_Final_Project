@@ -12,5 +12,7 @@ namespace ETreeks.Core.DTO
         public string? Houre { get; set; }
         public string appointmentstatus { get; set; }
         public decimal Appointmentid { get; set; }
+        public string Email { get; set; }
+
     }
 }
