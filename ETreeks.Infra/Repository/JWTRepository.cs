@@ -34,7 +34,7 @@ namespace ETreeks.Infra.Repository
             var p = new DynamicParameters();
             p.Add("@emailPac", account.Email, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("@passwordPac", account.Accountpassword, dbType: DbType.String, direction: ParameterDirection.Input);
-            IEnumerable<LoginDTO> result = _context.connection.Query<LoginDTO>("AccountLogin", p, commandType: CommandType.StoredProcedure);
+            IEnumerable<LoginDTO> result = _context.connection.Query<LoginDTO>("StudentLogin", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }
     }
