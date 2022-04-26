@@ -1,3 +1,4 @@
+using ETreeks.Core.DTO;
 using ETreeks.Core.Repository;
 using ETreeks.Core.Service;
 using System;
@@ -14,6 +15,11 @@ namespace ETreeks.Infra.Service
         public AccountService(IAccountRepository iaccountRepository)
         {
             _accountRepository = iaccountRepository;
+        }
+
+        public string addLocation(AddLocation addLocation)
+        {
+            return _accountRepository.addLocation(addLocation);
         }
 
         public string createAccount(Account account)

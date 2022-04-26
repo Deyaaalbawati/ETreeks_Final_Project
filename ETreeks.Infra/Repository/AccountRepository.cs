@@ -1,5 +1,6 @@
 using Dapper;
 using ETreeks.Core.Common;
+using ETreeks.Core.DTO;
 using ETreeks.Core.Repository;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,19 @@ namespace ETreeks.Infra.Repository
             this._context = idbcontext;
         }
 
+        public string addLocation(AddLocation addLocation)
+        {
+            var p = new DynamicParameters();
+            p.Add("AcoountIdPac", addLocation.Acoountid, dbType: System.Data.DbType.Decimal);
+            p.Add("WLinePac", addLocation.Wline, dbType: System.Data.DbType.Decimal);
+            p.Add("HLinePac", addLocation.Hline, dbType: System.Data.DbType.Decimal);
+
+            var result = _context.connection.ExecuteAsync("AccountPackage.addLoction", p, commandType: CommandType.StoredProcedure);
+
+            return "addLoction Successed";
+
+        }
+
         public string createAccount(Account account)
         {
             var p = new DynamicParameters();
@@ -36,8 +50,8 @@ namespace ETreeks.Infra.Repository
             p.Add("AccountStatusPac", account.Accountstatus, dbType: System.Data.DbType.String);
             p.Add("CertificatePac", account.Certificate, dbType: System.Data.DbType.String);
             p.Add("SpecializationPac", account.Specialization, dbType: System.Data.DbType.String);
-            p.Add("WlinePac", account.Wline, dbType: System.Data.DbType.String);
-            p.Add("HlinePac", account.Hline, dbType: System.Data.DbType.String);
+            p.Add("WlinePac", account.Wline, dbType: System.Data.DbType.Decimal);
+            p.Add("HlinePac", account.Hline, dbType: System.Data.DbType.Decimal);
 
 
 
@@ -129,8 +143,8 @@ namespace ETreeks.Infra.Repository
             p.Add("AccountStatusPac", account.Accountstatus, dbType: System.Data.DbType.String);
             p.Add("CertificatePac", account.Certificate, dbType: System.Data.DbType.String);
             p.Add("SpecializationPac", account.Specialization, dbType: System.Data.DbType.String);
-            p.Add("WlinePac", account.Wline, dbType: System.Data.DbType.String);
-            p.Add("HlinePac", account.Hline, dbType: System.Data.DbType.String);
+            p.Add("WlinePac", account.Wline, dbType: System.Data.DbType.Decimal);
+            p.Add("HlinePac", account.Hline, dbType: System.Data.DbType.Decimal);
 
 
             var result = _context.connection.ExecuteAsync("AccountPackage.updateAccount", p, commandType: CommandType.StoredProcedure);
