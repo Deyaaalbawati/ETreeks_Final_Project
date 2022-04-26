@@ -21,8 +21,8 @@ namespace WebApplication1.Models
         public string Accountstatus { get; set; }
         public string Certificate { get; set; }
         public string Specialization { get; set; }
-        public string Wline { get; set; }
-        public string Hline { get; set; }
+        public Decimal Wline { get; set; }
+        public Decimal Hline { get; set; }
 
 
         public virtual Role Role { get; set; }

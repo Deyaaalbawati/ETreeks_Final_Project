@@ -1,4 +1,5 @@
-﻿using ETreeks.Core.Service;
+﻿using ETreeks.Core.DTO;
+using ETreeks.Core.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -122,6 +123,20 @@ namespace ETreeks.Controllers
         {
             return _accountService.updateAccount(account);
         }
+
+
+        [HttpPut]
+        [ProducesResponseType(typeof(List<string>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<string>), StatusCodes.Status400BadRequest)]
+        [Route("AddLocation")]
+
+        public string addLocation([FromBody] AddLocation addLocation)
+        {
+            return _accountService.addLocation(addLocation);
+        }
+
+
+
 
 
         //I Edit this code. // Deyaa // Look at the create account //

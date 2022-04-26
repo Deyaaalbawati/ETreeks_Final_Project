@@ -11,7 +11,6 @@ namespace ETreeks.Core.DTO
         public string Lastname { get; set; }
         public string Email { get; set; }
 
-
         public string firstnameStudent { get; set; }
 
         public string lastnameStudent { get; set; }

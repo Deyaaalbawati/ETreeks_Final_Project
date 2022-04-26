@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ETreeks.Core.DTO;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using WebApplication1.Models;
@@ -10,6 +11,8 @@ namespace ETreeks.Core.Service
         string createAccount(Account account);
         string deleteAccount(int id);
         string updateAccount(Account account);
+        string addLocation(AddLocation addLocation);
+
         List<Account> getAccount();
         List<Account> searchTeacher(string TeacherName);
         List<Account> getTeacher();
